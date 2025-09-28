@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your MindPath Results | MindPath AI</title>
+    <link rel="icon" type="image/png" href="gallery/skills.png">
+    <link rel="stylesheet" href="results.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="gallery/skillsdark1.png" alt="Skillora Logo">
+<h1><span style="background: linear-gradient(90deg, #ff9216, #ff4d6d, #ff9216);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;">Skillora</span> Results</h1>
+            
+            
+        </header>
+
+        <main class="results-card">
+            <div class="user-info">
+                <h2>Report for <span id="userName">...</span></h2>
+                <p>Here is a summary of your top intelligences based on your responses.</p>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="resultsChart"></canvas>
+            </div>
+
+            <div id="intelligence-details">
+                </div>
+        </main>
+        <button id="backBtn" style="display: none;">&larr; Back</button>
+        <footer>
+            <p>&copy; MindPath AI. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    
+    <script src="results.js"></script>
+</body>
+</html>

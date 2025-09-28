@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindPath AI | Chatbot</title>
+    <link rel="icon" type="image/png" href="gallery/skills.png">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body data-theme="light">
+
+    <div id="auth-overlay">
+        <div class="auth-container">
+            <div id="login-form" class="form-section active">
+                <h2>Log In</h2>
+                <form id="login-form-content">
+                    <div class="auth-input-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn-send">Log In</button>
+                </form>
+                <div class="switch-form">
+                    <p>Don't have an account? <button id="show-signup">Sign Up</button></p>
+                </div>
+            </div>
+            <div id="signup-form" class="form-section">
+                <h2>Sign Up</h2>
+                <form id="signup-form-content">
+                    <div class="auth-input-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <button type="submit" class="btn-send">Sign Up</button>
+                </form>
+                <div class="switch-form">
+                    <p>Already have an account? <button id="show-login">Log In</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img id="logo" src="gallery/skills.png" alt="Skillora Logo">
+            <h2 style="  background: linear-gradient(90deg, #ff9216, #ff4d6d, #ff9216);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;">Skillora</h2>
+            <p>Your MindPath Guide</p>
+        </div>
+
+        <div class="profile-info">
+            <img id="profile-img" src="gallery/default-avatar.png" alt="User Profile">
+            <div class="profile-details">
+                <h4 id="profile-name">Loading...</h4>
+                <p id="profile-email">Loading...</p>
+            </div>
+            </div>
+
+        <button id="newChatBtn" class="sidebar-btn new-chat-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span>New Chat</span>
+        </button>
+        
+        <div class="chat-history-container">
+            <ul id="chat-history-list">
+            </ul>
+        </div>
+        
+        <div class="sidebar-actions">
+            <button id="sidebarResetBtn" class="sidebar-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 11.664 0M6.812 6.812a8.25 8.25 0 0 1 11.664 0m0 0l3.181-3.183m-3.181 3.183V2.985" />
+                </svg>
+                <span>Reset Chat</span>
+            </button>
+            <button id="sidebarHelpBtn" class="sidebar-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                </svg>
+                <span>Help</span>
+            </button>
+        </div>
+
+        <div class="sidebar-footer">
+            <p>Powered by Omega house</p>
+        </div>
+        <div class="resizer"></div>
+    </nav>
+
+    <div id="overlay"></div>
+
+    <main class="chat-section">
+        <header class="top-bar">
+            <button class="hamburger">☰</button>
+            <div class="top-bar-right-actions">
+                <button id="topBarResultBtn" class="btn btn-result">View Result</button>
+                <button id="themeToggle" class="theme-btn">🌞</button>
+                <button id="logoutBtn" class="btn btn-logout">Log Out</button>
+            </div>
+        </header>
+
+        <ul id="chatWindow"></ul>
+
+        <footer class="input-area">
+            <label for="userInput" class="visually-hidden">Type your message</label>
+            <input id="userInput" type="text" placeholder="Type something..." disabled>
+            <button id="sendBtn" class="btn-send" disabled>Send</button>
+        </footer>
+    </main>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="chatbot.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #111827;
+    color: #f9fafb;
+    margin: 0;
+    padding: 2rem;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #374151;
+    padding-bottom: 1rem;
+}
+
+h1 {
+    margin: 0;
+}
+
+.btn-logout {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    background: #f9fafb;
+    color: #111827;
+    transition: background-color 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #d1d5db;
+}
+
+.dashboard-container {
+    background-color: #1f2937;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow-x: auto; /* Allows table to scroll on small screens */
+}
+
+#user-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+#user-data-table th, #user-data-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #374151;
+}
+
+#user-data-table th {
+    font-weight: 700;
+    color: #d1d5db;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#user-data-table tbody tr:hover {
+    background-color: #374151;
+}
+
+#user-data-table td {
+    vertical-align: middle;
+}
+
+#table-body .intelligence-cell {
+    font-weight: 500;
+    color: #818cf8; /* A nice purple accent */
+}
+
+#table-body .review-cell {
+    font-style: italic;
+    color: #a0aec0;
+    max-width: 400px; /* Prevents very long reviews from breaking layout */
+    white-space: pre-wrap; /* Respects line breaks in reviews */
+}
+
+/* --- ACTION BUTTON STYLES FOR THE TABLE --- */
+
+#user-data-table .actions-cell {
+    text-align: center;
+}
+
+.view-result-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid #818cf8;
+    background-color: transparent;
+    color: #818cf8;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.view-result-btn:hover {
+    background-color: #818cf8;
+    color: #111827;
+}
+
+
+/* --- NEW & IMPROVED RESPONSIVE DESIGN --- */
+
+/* This container enables the horizontal scroll on small screens */
+.dashboard-container {
+    background-color: #1f2937;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow-x: auto; /* This is the key property */
+}
+
+/* We give the table a minimum width to prevent columns from squishing too much */
+#user-data-table {
+    width: 100%;
+    min-width: 700px; /* Forces scrolling when screen is narrower than 700px */
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+/* Minor adjustments for small screens */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}

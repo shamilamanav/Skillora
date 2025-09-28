@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <button id="logoutBtn" class="btn-logout">Log Out</button>
+    </header>
+
+    <main class="dashboard-container">
+     <table id="user-data-table">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Email</th>
+            <th>Top Intelligences</th>
+            <th>Review</th>
+            <th>Actions</th> </tr>
+    </thead>
+    <tbody id="table-body">
+        <tr>
+            <td colspan="5">Loading student data...</td>
+        </tr>
+    </tbody>
+    </table>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="admin-dashboard.js"></script>
+</body>
+</html>
